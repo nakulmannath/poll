@@ -5,10 +5,12 @@ import Api from "../../services/Api";
 
 import { useNavigation } from "@react-navigation/native";
 
+import { IData, HomeScreenNavigationProp } from "../../navigation/types";
+
 const Home = () => {
   const { navigate } = useNavigation<HomeScreenNavigationProp>();
   const [page, setPage] = useState(0);
-  const [data, setData] = useState<
+  const [postData, setPostData] = useState<
     Array<{
       title: string;
       url: string;
@@ -20,12 +22,7 @@ const Home = () => {
   const callApi = async () => {
     try {
       const response = await Api(page);
-      console.log(response.data);
-
-      setData((oldArray) => [...oldArray, ...response.data.hits]);
-      // console.log(setData);
-
-      // navigate("Details");
+      setPostData((oldArray) => [...oldArray, ...response.data.hits]);
     } catch (err) {
       console.log(err);
     }
@@ -41,17 +38,25 @@ const Home = () => {
       url={item.url}
       created_at={item.created_at}
       author={item.author}
+      sendData={() => {
+        navigate("Details");
+      }}
     />
   );
 
   const onEndReached = () => {
     setPage((old) => old + 1);
-    console.log("hello");
   };
+
+  useEffect(() => {
+    setInterval(() => {
+      callApi();
+    }, 10000);
+  }, [page]);
 
   return (
     <FlatList
-      data={data} //pass in our data array
+      data={postData} //pass in our data array
       renderItem={renderItem} //tell React to use our renderItem function that we defined earlier
       onEndReached={onEndReached}
     />
