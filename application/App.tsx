@@ -1,5 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import RootNav from './src/navigrations/RootNav';
+import RootNav from "./src/navigation/RootNav";
+import { StatusBar } from "expo-status-bar";
 
 function App() {
   return (
