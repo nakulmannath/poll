@@ -4,6 +4,7 @@ import {
   ViewStyle,
   TextStyle,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import { color, spacing } from "../theme";
 
@@ -11,9 +12,13 @@ const ROW_CONTAINER: ViewStyle = {
   flexDirection: "row",
   alignItems: "center",
   marginVertical: spacing[1],
+  marginRight: spacing[8],
 };
 const ITEM_CONTAINER: ViewStyle = {
   marginVertical: spacing[4],
+  marginLeft: spacing[5],
+  marginRight: spacing[4],
+  // width: Dimensions.get("window").width - 30,
 };
 const LABEL: TextStyle = {
   fontSize: 16,
