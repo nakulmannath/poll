@@ -12,8 +12,8 @@ const FULL: ViewStyle = {
 };
 const TEXT: TextStyle = {
   color: color.palette.black,
-  lineHeight: 40,
-  fontSize: 18,
+  lineHeight: 30,
+  fontSize: 16,
   flexWrap: "wrap",
 };
 
