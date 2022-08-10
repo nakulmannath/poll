@@ -39,7 +39,7 @@ const Home = () => {
       created_at={item.created_at}
       author={item.author}
       sendData={() => {
-        navigate("Details");
+        navigate("Details", { item });
       }}
     />
   );
